@@ -1,22 +1,32 @@
-📚 Library Management System (Java + SQLite)
-🔍 Overview
+Perfect 👍 — your README is almost correct, but as you can see in the image, the **project structure and commands are not aligned properly**.
+That’s because **GitHub markdown** needs triple backticks (```) before and after every block that should keep its structure (like directory trees or commands).
 
-The Library Management System is a console-based Java application that allows users to manage books efficiently.
-It supports adding, viewing, issuing, and returning books with permanent storage using SQLite and JDBC.
+Here’s the **correctly formatted and final version** of your `README.md` —
+You can **copy and paste it exactly once** into your file, and it will appear *perfectly structured* on GitHub 👇
 
-⚙️ Tech Stack
+---
 
-Language: Java (JDK 17 or higher)
+```markdown
+# 📚 Library Management System (Java + SQLite)
 
-Database: SQLite
+## 🔍 Overview
+The **Library Management System** is a console-based Java application that allows users to manage books efficiently.  
+It supports adding, viewing, issuing, and returning books with permanent storage using **SQLite** and **JDBC**.
 
-Database Driver: sqlite-jdbc-3.50.3.0.jar
+---
 
-IDE/Editor: VS Code / Eclipse
+## ⚙️ Tech Stack
+- **Language:** Java (JDK 17 or higher)  
+- **Database:** SQLite  
+- **Database Driver:** sqlite-jdbc-3.50.3.0.jar  
+- **IDE/Editor:** VS Code / Eclipse  
+- **Build Tool:** Command Line (javac, java)
 
-Build Tool: Command Line (javac, java)
+---
 
-🗂️ Project Structure
+## 🗂️ Project Structure
+```
+
 LibraryManagementSystem/
 │
 ├── lib/
@@ -44,62 +54,70 @@ LibraryManagementSystem/
 │
 └── README.md
 
-🚀 How to Compile and Run
-🧩 Step 1 — Navigate to the project folder
+````
+
+---
+
+## 🚀 How to Compile and Run
+
+### 🧩 Step 1 — Navigate to the project folder
+```bash
 cd C:\Users\sudee\LibraryManagementSystem
+````
 
-⚙️ Step 2 — Compile all Java files
+### ⚙️ Step 2 — Compile all Java files
+
+```bash
 javac -d out -cp ".;lib/sqlite-jdbc-3.50.3.0.jar" src/util/*.java src/db/*.java src/model/*.java src/dao/*.java src/main/*.java
-
+```
 
 ✅ This command:
 
-Compiles all Java source files
+* Compiles all Java source files
+* Outputs `.class` files in the `out` folder
+* Links the SQLite JDBC driver
 
-Outputs .class files in the out folder
+### ▶️ Step 3 — Run the application
 
-Links the SQLite JDBC driver
-
-▶️ Step 3 — Run the application
-
+```bash
 java -cp "out;lib/sqlite-jdbc-3.50.3.0.jar" main.Main
+```
 
-💡 Features
+---
 
-➕ Add new books
+## 💡 Features
 
-📚 View all books
+* ➕ Add new books
+* 📚 View all books
+* ✏️ Update or delete books
+* 📖 Issue and return books
+* 🔍 Search by title or author
+* 🧠 Persistent SQLite database
 
-✏️ Update or delete books
+---
 
-📖 Issue and return books
+## 🗄️ Database
 
-🔍 Search by title or author
+* Automatically creates `LibraryDB.db`
+* Tables:
 
-🧠 Persistent SQLite database
+  * **books**
+  * **issued_books**
 
-🗄️ Database
+---
 
-Automatically creates LibraryDB.db
+## 🧱 Future Enhancements
 
-Tables:
+* 🖥️ Add GUI using JavaFX or Swing
+* 🔐 Implement user authentication
+* 📊 Add reports and analytics
+* 💰 Include fine calculation for late returns
 
-books
+---
 
-issued_books
+## 📸 Example Console Output
 
-🧱 Future Enhancements
-
-🖥️ Add GUI using JavaFX or Swing
-
-🔐 Implement user authentication
-
-📊 Add reports and analytics
-
-💰 Include fine calculation for late returns
-
-📸 Example Console Output
-
+```
 ====== Library Management System ======
 1. Add Book
 2. View Books
@@ -109,14 +127,19 @@ issued_books
 6. Return Book
 7. Exit
 Enter your choice:
+```
 
-👤 Author
+---
 
-Developed by: Vanitha P
-📧 Email: vanithavani.p26@gmail.com
+## 👤 Author
 
-💼 GitHub: github.com/vanithaP26
+**Developed by:** Vanitha P
+
+📧 Email: [vanithavani.p26@gmail.com](mailto:your.email@example.com)
+💼 GitHub: [github.com/vanithaP26](https://github.com/vanithaP26)
 
 
+---
 
-⭐ If you like this project, give it a star on GitHub!
+⭐ *If you like this project, give it a star on GitHub!*
+
