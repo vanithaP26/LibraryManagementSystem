@@ -1,94 +1,122 @@
-Sure 👍 here’s a **clean, single-copy version** of your `README.md` — short, structured, and perfect for GitHub 👇
+📚 Library Management System (Java + SQLite)
+🔍 Overview
 
----
+The Library Management System is a console-based Java application that allows users to manage books efficiently.
+It supports adding, viewing, issuing, and returning books with permanent storage using SQLite and JDBC.
 
-```markdown
-# 📚 Library Management System (Java + SQLite)
+⚙️ Tech Stack
 
-## 🔍 Overview
-A console-based Java project to manage library operations — add, view, issue, and return books — using **SQLite** and **JDBC**.
+Language: Java (JDK 17 or higher)
 
----
+Database: SQLite
 
-## ⚙️ Tech Stack
-- Java (JDK 17+)
-- SQLite (via JDBC)
-- VS Code / Command Prompt
-- sqlite-jdbc-3.50.3.0.jar
+Database Driver: sqlite-jdbc-3.50.3.0.jar
 
----
+IDE/Editor: VS Code / Eclipse
 
-## 🗂️ Project Structure
-```
+Build Tool: Command Line (javac, java)
 
+🗂️ Project Structure
 LibraryManagementSystem/
 │
-├── lib/sqlite-jdbc-3.50.3.0.jar
+├── lib/
+│   └── sqlite-jdbc-3.50.3.0.jar
+│
 ├── src/
-│   ├── db/DatabaseHelper.java
-│   ├── util/DatabaseConnection.java
-│   ├── model/Book.java
-│   ├── dao/BookDAO.java, IssueDAO.java
-│   └── main/Main.java
-├── out/ (compiled files)
+│   ├── util/
+│   │   └── DatabaseConnection.java
+│   │
+│   ├── db/
+│   │   └── DatabaseHelper.java
+│   │
+│   ├── model/
+│   │   └── Book.java
+│   │
+│   ├── dao/
+│   │   ├── BookDAO.java
+│   │   └── IssueDAO.java
+│   │
+│   └── main/
+│       └── Main.java
+│
+├── out/
+│   └── (compiled .class files)
+│
 └── README.md
 
-````
-
----
-
-## 🚀 Compile & Run
-
-### Step 1 — Open Terminal
-```bash
+🚀 How to Compile and Run
+🧩 Step 1 — Navigate to the project folder
 cd C:\Users\sudee\LibraryManagementSystem
-````
 
-### Step 2 — Compile
-
-```bash
+⚙️ Step 2 — Compile all Java files
 javac -d out -cp ".;lib/sqlite-jdbc-3.50.3.0.jar" src/util/*.java src/db/*.java src/model/*.java src/dao/*.java src/main/*.java
-```
 
-### Step 3 — Run
 
-```bash
+✅ This command:
+
+Compiles all Java source files
+
+Outputs .class files in the out folder
+
+Links the SQLite JDBC driver
+
+▶️ Step 3 — Run the application
+
 java -cp "out;lib/sqlite-jdbc-3.50.3.0.jar" main.Main
-```
 
----
+💡 Features
 
-## 🧩 Features
+➕ Add new books
 
-* Add / View / Update / Delete books
-* Issue and return books
-* Stores records in SQLite
-* Console-based and beginner-friendly
+📚 View all books
 
----
+✏️ Update or delete books
 
-## 🧱 Future Enhancements
+📖 Issue and return books
 
-* GUI using JavaFX
-* Fine calculation system
-* User authentication
+🔍 Search by title or author
 
----
+🧠 Persistent SQLite database
 
-## 👤 Author
+🗄️ Database
 
-**Vanitha P**
-📧 [your.email@example.com](mailto:your.email@example.com)
-💼 [github.com/your-username](https://github.com/your-username)
-🌐 [linkedin.com/in/your-link](https://linkedin.com/in/your-link)
+Automatically creates LibraryDB.db
 
----
+Tables:
 
-⭐ *If you like this project, give it a star!*
+books
 
-```
+issued_books
 
----
+🧱 Future Enhancements
 
-Would you like me to make it slightly more **GitHub-attractive (with emoji titles + screenshot placeholder)** next? It makes your repo stand out visually.
-```
+🖥️ Add GUI using JavaFX or Swing
+
+🔐 Implement user authentication
+
+📊 Add reports and analytics
+
+💰 Include fine calculation for late returns
+
+📸 Example Console Output
+
+====== Library Management System ======
+1. Add Book
+2. View Books
+3. Update Book
+4. Delete Book
+5. Issue Book
+6. Return Book
+7. Exit
+Enter your choice:
+
+👤 Author
+
+Developed by: Vanitha P
+📧 Email: vanithavani.p26@gmail.com
+
+💼 GitHub: github.com/vanithaP26
+
+
+
+⭐ If you like this project, give it a star on GitHub!
