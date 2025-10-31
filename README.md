@@ -29,3 +29,10 @@ It allows librarians to **add, view, issue, and return books** using an SQLite d
 2. Open terminal and navigate to project directory:
    ```bash
    cd LibraryManagementSystem
+3.Compile all Java files:
+    ```bash
+    javac -d out -cp ".;lib/sqlite-jdbc-3.50.3.0.jar" src/util/*.java src/db/*.java src/model/*.java src/dao/*.java src/main/*.java
+4.Run the program:
+    ```bash
+    java -cp "out;lib/sqlite-jdbc-3.50.3.0.jar" main.Main
+
