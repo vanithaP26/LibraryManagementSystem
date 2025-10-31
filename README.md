@@ -25,7 +25,6 @@ It supports adding, viewing, issuing, and returning books with permanent storage
 ---
 
 ## 🗂️ Project Structure
-```
 
 LibraryManagementSystem/
 │
@@ -54,9 +53,6 @@ LibraryManagementSystem/
 │
 └── README.md
 
-````
-
----
 
 ## 🚀 How to Compile and Run
 
