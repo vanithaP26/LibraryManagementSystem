@@ -1,4 +1,4 @@
-package db;
+package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +16,7 @@ public class DatabaseHelper {
         try (Connection con = getConnection();
              Statement stmt = con.createStatement()) {
 
-            // Create Books table
+            // Create books table
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS books (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "title TEXT NOT NULL," +
@@ -25,7 +25,7 @@ public class DatabaseHelper {
                     "year INTEGER," +
                     "quantity INTEGER)");
 
-            // Create IssuedBooks table
+            // Create issued_books table
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS issued_books (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "book_id INTEGER," +
@@ -34,10 +34,10 @@ public class DatabaseHelper {
                     "return_date TEXT," +
                     "FOREIGN KEY(book_id) REFERENCES books(id))");
 
-            System.out.println(" Database initialized successfully!");
+            System.out.println("Database initialized successfully!");
 
         } catch (SQLException e) {
-            System.out.println(" Database initialization failed: " + e.getMessage());
+            System.out.println("Database initialization failed: " + e.getMessage());
         }
     }
 }

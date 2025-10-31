@@ -3,6 +3,8 @@ package main;
 import java.util.*;
 import dao.BookDAO;
 import model.Book;
+import dao.IssueDAO;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -15,7 +17,9 @@ public class Main {
             System.out.println("2. View All Books");
             System.out.println("3. Update Book Quantity");
             System.out.println("4. Delete Book");
-            System.out.println("5. Exit");
+            System.out.println("5. Issue Book");
+            System.out.println("6. Return Book");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine(); // consume newline
@@ -57,8 +61,22 @@ public class Main {
                     int idD = sc.nextInt();
                     dao.deleteBook(idD);
                     break;
-
                 case 5:
+                    System.out.print("Enter Book ID: ");
+                    int bookId = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Enter Issued To: ");
+                    String issuedTo = sc.nextLine();
+                    new IssueDAO().issueBook(bookId, issuedTo, "2025-10-30");
+                    break;
+
+                case 6:
+                    System.out.print("Enter Issue ID: ");
+                    int issueId = sc.nextInt();
+                    new IssueDAO().returnBook(issueId, "2025-11-02");
+                    break;
+
+                case 7:
                     System.out.println(" Exiting... Thank you!");
                     sc.close();
                     return;

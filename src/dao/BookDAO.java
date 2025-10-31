@@ -3,14 +3,14 @@ package dao;
 import java.sql.*;
 import java.util.*;
 import model.Book;
-import util.DatabaseConnection;
+import db.DatabaseHelper;
 
 public class BookDAO {
 
     // ➕ Add a new book to the database
     public void addBook(Book book) {
         String query = "INSERT INTO books (title, author, publisher, year, quantity) VALUES (?, ?, ?, ?, ?)";
-        try (Connection con = DatabaseConnection.getConnection();
+        try (Connection con = DatabaseHelper.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
 
             ps.setString(1, book.getTitle());
@@ -30,7 +30,7 @@ public class BookDAO {
     public List<Book> getAllBooks() {
         List<Book> books = new ArrayList<>();
         String query = "SELECT * FROM books";
-        try (Connection con = DatabaseConnection.getConnection();
+        try (Connection con = DatabaseHelper.getConnection();
              Statement st = con.createStatement();
              ResultSet rs = st.executeQuery(query)) {
 
@@ -54,7 +54,7 @@ public class BookDAO {
     //  Update quantity of a book
     public void updateBookQuantity(int id, int newQty) {
         String query = "UPDATE books SET quantity=? WHERE id=?";
-        try (Connection con = DatabaseConnection.getConnection();
+        try (Connection con = DatabaseHelper.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
 
             ps.setInt(1, newQty);
@@ -72,7 +72,7 @@ public class BookDAO {
     //  Delete a book by ID
     public void deleteBook(int id) {
         String query = "DELETE FROM books WHERE id=?";
-        try (Connection con = DatabaseConnection.getConnection();
+        try (Connection con = DatabaseHelper.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
 
             ps.setInt(1, id);
