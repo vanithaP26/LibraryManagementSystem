@@ -1,27 +1,24 @@
 package dao;
 
-import db.DatabaseHelper;
-import model.Book;
-
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import model.Book;
+import util.DatabaseConnection;
 
 public class BookDAO {
 
-    // ✅ Add a new book to the database
+    // ➕ Add a new book to the database
     public void addBook(Book book) {
-        String sql = "INSERT INTO books (title, author, publisher, year, quantity) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = DatabaseHelper.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        String query = "INSERT INTO books (title, author, publisher, year, quantity) VALUES (?, ?, ?, ?, ?)";
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
 
-            pstmt.setString(1, book.getTitle());
-            pstmt.setString(2, book.getAuthor());
-            pstmt.setString(3, book.getPublisher());
-            pstmt.setInt(4, book.getYear());
-            pstmt.setInt(5, book.getQuantity());
-            pstmt.executeUpdate();
-
+            ps.setString(1, book.getTitle());
+            ps.setString(2, book.getAuthor());
+            ps.setString(3, book.getPublisher());
+            ps.setInt(4, book.getYear());
+            ps.setInt(5, book.getQuantity());
+            ps.executeUpdate();
             System.out.println(" Book added successfully!");
 
         } catch (SQLException e) {
@@ -29,64 +26,63 @@ public class BookDAO {
         }
     }
 
-    // ✅ Retrieve all books from the database
+    //  View all books
     public List<Book> getAllBooks() {
         List<Book> books = new ArrayList<>();
-        String sql = "SELECT * FROM books";
-
-        try (Connection conn = DatabaseHelper.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+        String query = "SELECT * FROM books";
+        try (Connection con = DatabaseConnection.getConnection();
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery(query)) {
 
             while (rs.next()) {
-                Book book = new Book(
-                        rs.getInt("id"),
-                        rs.getString("title"),
-                        rs.getString("author"),
-                        rs.getString("publisher"),
-                        rs.getInt("year"),
-                        rs.getInt("quantity")
+                Book b = new Book(
+                    rs.getInt("id"),
+                    rs.getString("title"),
+                    rs.getString("author"),
+                    rs.getString("publisher"),
+                    rs.getInt("year"),
+                    rs.getInt("quantity")
                 );
-                books.add(book);
+                books.add(b);
             }
-
         } catch (SQLException e) {
             System.out.println(" Error fetching books: " + e.getMessage());
         }
         return books;
     }
 
-    // ✅ Delete a book by ID
-    public void deleteBook(int id) {
-        String sql = "DELETE FROM books WHERE id = ?";
-        try (Connection conn = DatabaseHelper.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    //  Update quantity of a book
+    public void updateBookQuantity(int id, int newQty) {
+        String query = "UPDATE books SET quantity=? WHERE id=?";
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
 
-            pstmt.setInt(1, id);
-            int rows = pstmt.executeUpdate();
-            if (rows > 0)
-                System.out.println(" Book deleted successfully!");
-            else
-                System.out.println(" No book found with ID: " + id);
+            ps.setInt(1, newQty);
+            ps.setInt(2, id);
+            int rows = ps.executeUpdate();
+
+            if (rows > 0) System.out.println(" Quantity updated successfully!");
+            else System.out.println(" Book not found.");
 
         } catch (SQLException e) {
-            System.out.println(" Error deleting book: " + e.getMessage());
+            System.out.println("Error updating quantity: " + e.getMessage());
         }
     }
 
-    // ✅ Update book quantity
-    public void updateQuantity(int id, int quantity) {
-        String sql = "UPDATE books SET quantity = ? WHERE id = ?";
-        try (Connection conn = DatabaseHelper.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    //  Delete a book by ID
+    public void deleteBook(int id) {
+        String query = "DELETE FROM books WHERE id=?";
+        try (Connection con = DatabaseConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
 
-            pstmt.setInt(1, quantity);
-            pstmt.setInt(2, id);
-            pstmt.executeUpdate();
-            System.out.println("✅ Quantity updated successfully!");
+            ps.setInt(1, id);
+            int rows = ps.executeUpdate();
+
+            if (rows > 0) System.out.println(" Book deleted successfully!");
+            else System.out.println(" Book not found.");
 
         } catch (SQLException e) {
-            System.out.println(" Error updating quantity: " + e.getMessage());
+            System.out.println(" Error deleting book: " + e.getMessage());
         }
     }
 }
