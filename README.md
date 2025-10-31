@@ -1,12 +1,4 @@
-Perfect 👍 — your README is almost correct, but as you can see in the image, the **project structure and commands are not aligned properly**.
-That’s because **GitHub markdown** needs triple backticks (```) before and after every block that should keep its structure (like directory trees or commands).
 
-Here’s the **correctly formatted and final version** of your `README.md` —
-You can **copy and paste it exactly once** into your file, and it will appear *perfectly structured* on GitHub 👇
-
----
-
-```markdown
 # 📚 Library Management System (Java + SQLite)
 
 ## 🔍 Overview
@@ -135,6 +127,7 @@ Enter your choice:
 **Developed by:** Vanitha P
 
 📧 Email: [vanithavani.p26@gmail.com](mailto:your.email@example.com)
+
 💼 GitHub: [github.com/vanithaP26](https://github.com/vanithaP26)
 
 
